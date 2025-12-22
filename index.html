@@ -87,7 +87,6 @@
         }
         #preview-stamp.show { display: block; }
         
-        .section-title { @apply text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200 flex items-center; }
         #resizer { transition: background-color 0.2s; } #resizer:hover, #resizer.active { background-color: #0ea5e9; } #resizer:hover i, #resizer.active i { color: white; }
         
         /* Notifications & Modals */
@@ -217,7 +216,7 @@
                 
                 <!-- 1. Configuration -->
                 <div class="bg-brand-50 p-5 rounded-xl border border-brand-100 shadow-sm">
-                    <h2 class="text-brand-900 font-bold mb-4 flex items-center"><i class="fa-solid fa-sliders text-brand-600 mr-2"></i> <span data-i18n="section-config">Configuration</span></h2>
+                    <h2 class="text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200 flex items-center"><i class="fa-solid fa-sliders text-brand-600 mr-2"></i> <span data-i18n="section-config">Configuration</span></h2>
                     
                     <div class="mb-4 bg-white p-3 rounded-lg border border-brand-100">
                         <div class="flex items-center justify-between">
@@ -239,7 +238,7 @@
                         <div>
                             <label class="form-label" data-i18n="lbl-invoice-num">Numéro</label>
                             <div class="flex gap-2 items-center">
-                                <input type="text" id="invoice-number" class="form-input font-mono font-bold text-brand-800" value="FAC-2025-001">
+                                <input type="text" id="invoice-number" class="form-input font-mono font-bold text-brand-800" value="FAC-2026-001">
                                 <!-- Bouton Incrémentation Magique (Déplacé ici) -->
                                 <button type="button" onclick="incrementInvoiceNumber()" class="mt-1 h-[38px] w-10 flex-shrink-0 text-brand-600 bg-brand-50 hover:bg-brand-100 rounded border border-brand-200 flex items-center justify-center transition-colors shadow-sm" title="Numéro suivant (+1)">
                                     <i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -281,7 +280,8 @@
                 <!-- Clients -->
                 <div class="grid grid-cols-1 gap-8">
                     <div>
-                        <h2 class="section-title"><i class="fa-solid fa-building text-brand-600 mr-2"></i> <span data-i18n="section-sender">Votre Entreprise</span></h2>
+                        <!-- MODIFICATION: Même style que pour "Client" -->
+                        <h2 class="text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200 flex items-center"><i class="fa-solid fa-building text-brand-600 mr-2"></i> <span data-i18n="section-sender">Votre Entreprise</span></h2>
                         <div class="space-y-3">
                             <input type="text" id="sender-name" class="form-input font-bold" data-placeholder-i18n="ph-sender-name">
                             <textarea id="sender-details" rows="5" class="form-input text-xs" data-placeholder-i18n="ph-sender-details" placeholder="Adresse complète&#10;Téléphone&#10;Email&#10;SIREN ou SIRET"></textarea>
@@ -304,7 +304,8 @@
 
                 <!-- Lignes -->
                 <div>
-                    <div class="flex items-center justify-between mb-4 border-b border-gray-200 pb-2"><h2 class="text-lg font-bold text-gray-900"><i class="fa-solid fa-list-check text-brand-600 mr-2"></i> <span data-i18n="section-items">Lignes</span></h2></div>
+                    <!-- MODIFICATION: Même style que pour les autres titres -->
+                    <div class="flex items-center justify-between mb-4 border-b border-gray-200 pb-2"><h2 class="text-lg font-bold text-gray-900 flex items-center"><i class="fa-solid fa-list-check text-brand-600 mr-2"></i> <span data-i18n="section-items">Lignes</span></h2></div>
                     <div id="items-container" class="space-y-3"></div>
                     <div class="mt-4 flex justify-center"><button type="button" onclick="addItem()" class="w-full sm:w-auto text-sm bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold py-2 px-6 rounded-lg border border-brand-200 transition-all shadow-sm flex items-center justify-center gap-2"><i class="fa-solid fa-plus-circle"></i> <span data-i18n="btn-add">Ajouter une ligne</span></button></div>
                     
@@ -338,7 +339,8 @@
 
                 <!-- Footer -->
                 <div>
-                    <h2 class="section-title"><i class="fa-solid fa-file-signature text-brand-600 mr-2"></i> <span data-i18n="section-footer">Finalisation</span></h2>
+                    <!-- MODIFICATION: Même style que pour les autres titres -->
+                    <h2 class="text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200 flex items-center"><i class="fa-solid fa-file-signature text-brand-600 mr-2"></i> <span data-i18n="section-footer">Finalisation</span></h2>
                     <div class="space-y-4">
                         <div><label class="form-label" data-i18n="lbl-notes">Conditions</label><textarea id="notes" rows="2" class="form-input text-xs" data-placeholder-i18n="ph-notes"></textarea></div>
                         <div><label class="form-label text-brand-600"><i class="fa-solid fa-qrcode mr-1"></i> Lien Paiement (QR)</label><input type="text" id="payment-link" class="form-input text-xs" placeholder="https://..." oninput="updateQRCodeDebounced()"></div>
@@ -352,6 +354,7 @@
                 <div id="seo-content" class="px-6 py-12 mt-12 border-t border-gray-200 text-gray-600 leading-relaxed text-sm bg-gray-50 rounded-xl">
                     <article class="prose prose-sm max-w-none text-gray-600">
                         <h1 class="text-2xl font-extrabold text-gray-900 mb-6">Logiciel de Facturation Gratuit & Générateur de Devis PDF</h1>
+                        
                         <p class="mb-4">
                             Vous cherchez un moyen simple, rapide et <strong>100% gratuit</strong> pour éditer vos factures ? Bienvenue sur <strong>Générateur Facture</strong> (anciennement InvoicExpert). Notre outil en ligne a été conçu pour simplifier la vie des freelances, artisans, auto-entrepreneurs et PME. Fini les fichiers Excel complexes ou les logiciels payants : créez des documents professionnels, conformes et esthétiques en quelques clics.
                         </p>
@@ -367,13 +370,13 @@
                             <li><strong>Calculs automatisés :</strong> Ne sortez plus votre calculatrice. Le logiciel gère les totaux HT, les taux de TVA multiples, les remises et le montant TTC automatiquement.</li>
                         </ul>
 
-                        <h2 class="text-lg font-bold text-gray-800 mt-8 mb-3">Comment faire une facture conforme en 2025 ?</h2>
+                        <h2 class="text-lg font-bold text-gray-800 mt-8 mb-3">Comment faire une facture conforme en 2026 ?</h2>
                         <p class="mb-4">
                             La législation française est stricte. Une facture invalide peut entraîner des amendes fiscales (15€ par mention manquante) et des retards de paiement. Notre générateur intègre nativement les champs obligatoires :
                         </p>
                         <ol class="list-decimal pl-5 mb-6 space-y-2">
                             <li><strong>Informations de l'émetteur et du client :</strong> Nom, adresse sociale, et surtout les numéros SIREN/SIRET et le numéro de TVA intracommunautaire (si applicable).</li>
-                            <li><strong>Numérotation unique :</strong> Chaque facture doit avoir un numéro unique basé sur une séquence chronologique continue (ex: FAC-2025-001). Ne supprimez jamais une facture émise, faites un avoir à la place.</li>
+                            <li><strong>Numérotation unique :</strong> Chaque facture doit avoir un numéro unique basé sur une séquence chronologique continue (ex: FAC-2026-001). Ne supprimez jamais une facture émise, faites un avoir à la place.</li>
                             <li><strong>Date d'émission et d'échéance :</strong> Indispensables pour calculer les délais de paiement et les éventuelles pénalités.</li>
                             <li><strong>Désignation des produits/services :</strong> Une description claire de chaque ligne, avec la quantité, le prix unitaire HT et le taux de TVA associé.</li>
                             <li><strong>Mentions légales de pied de page :</strong> Forme juridique de la société (SARL, SAS, EI...), capital social, ville du RCS, et mentions sur les pénalités de retard et l'indemnité forfaitaire de recouvrement (40€).</li>
@@ -462,6 +465,7 @@
                                 </p>
                             </details>
 
+                            <!-- NEW QUESTIONS -->
                             <details class="group bg-white rounded-lg border border-gray-200 p-4 cursor-pointer">
                                 <summary class="flex justify-between items-center font-semibold text-gray-900 list-none">
                                     <span>Si je ferme la page, mes données sont-elles perdues ?</span>
@@ -524,7 +528,7 @@
                         <div class="w-1/2 text-right">
                             <h2 id="doc-title" class="text-4xl font-extrabold text-gray-200 uppercase tracking-widest leading-none mb-4" data-i18n="invoice-title">Facture</h2>
                             <div class="space-y-1">
-                                <p class="text-sm text-gray-500" data-i18n="preview-ref">Référence</p><p id="preview-invoice-number" class="text-lg font-bold text-gray-900 mb-2">FAC-001</p>
+                                <p class="text-sm text-gray-500" data-i18n="preview-ref">Référence</p><p id="preview-invoice-number" class="text-lg font-bold text-gray-900 mb-2">FAC-2026-001</p>
                                 <div class="grid grid-cols-2 gap-4 text-left inline-block bg-gray-50 p-2 rounded border border-gray-100">
                                     <div><p class="text-[10px] uppercase text-gray-500 font-bold" data-i18n="preview-issue">Émission</p><p id="preview-invoice-date" class="font-medium text-sm">--/--/----</p></div>
                                     <div><p id="lbl-preview-due" class="text-[10px] uppercase text-gray-500 font-bold" data-i18n="preview-due">Échéance</p><p id="preview-due-date" class="font-medium text-sm text-red-500">--/--/----</p></div>
@@ -593,7 +597,7 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10">
-                    <span class="text-[10px] text-gray-400 font-medium cursor-default select-none">&copy; 2025 Générateur Facture</span>
+                    <span class="text-[10px] text-gray-400 font-medium cursor-default select-none">&copy; 2026 Générateur Facture</span>
                     <button onclick="openModal('legal-modal', 'mentions')" class="group flex items-center text-xs font-semibold text-gray-500 hover:text-brand-600 transition-all duration-200">
                         <span class="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-brand-500 group-hover:scale-125 mr-2 transition-all"></span>Mentions Légales
                     </button>
