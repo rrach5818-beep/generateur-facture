@@ -413,12 +413,83 @@
                         <h2 class="text-lg font-bold text-gray-800 mt-8 mb-3">Questions Fréquentes (FAQ)</h2>
                         <div class="space-y-3">
                             <details class="group bg-white rounded-lg border border-gray-200 p-4 cursor-pointer">
-                                <summary class="flex justify-between items-center font-semibold text-gray-900 list-none"><span>Est-ce compatible Factur-X ?</span><i class="fa-solid fa-chevron-down text-brand-500"></i></summary>
-                                <p class="mt-3 text-gray-600 pl-4 border-l-2 border-brand-500">Actuellement, nous générons du PDF standard parfait pour les petites structures.</p>
+                                <summary class="flex justify-between items-center font-semibold text-gray-900 list-none">
+                                    <span>Est-ce compatible avec la Facture Électronique (Factur-X) ?</span>
+                                    <i class="fa-solid fa-chevron-down text-brand-500 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <p class="mt-3 text-gray-600 pl-4 border-l-2 border-brand-500">
+                                    Actuellement, nous générons des fichiers PDF standard parfaits pour les échanges courants. La réforme de la facturation électronique obligatoire (Factur-X) est progressive. Notre outil est idéal pour les petites structures non assujetties ou en démarrage.
+                                </p>
                             </details>
+
                             <details class="group bg-white rounded-lg border border-gray-200 p-4 cursor-pointer">
-                                <summary class="flex justify-between items-center font-semibold text-gray-900 list-none"><span>Données perdues ?</span><i class="fa-solid fa-chevron-down text-brand-500"></i></summary>
-                                <p class="mt-3 text-gray-600 pl-4 border-l-2 border-brand-500">Vos données sont dans votre navigateur. Utilisez le bouton "Sauvegarder" pour créer un fichier de secours.</p>
+                                <summary class="flex justify-between items-center font-semibold text-gray-900 list-none">
+                                    <span>Puis-je changer la devise (USD, GBP, CHF) ?</span>
+                                    <i class="fa-solid fa-chevron-down text-brand-500 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <p class="mt-3 text-gray-600 pl-4 border-l-2 border-brand-500">
+                                    Oui. Le monde est global. Sélectionnez votre devise (Euro, Dollar, Livre Sterling, Franc Suisse, Franc CFA...) dans le panneau de configuration. Le symbole monétaire s'ajustera automatiquement sur tout le document.
+                                </p>
+                            </details>
+
+                            <details class="group bg-white rounded-lg border border-gray-200 p-4 cursor-pointer">
+                                <summary class="flex justify-between items-center font-semibold text-gray-900 list-none">
+                                    <span>Comment insérer mon logo sur la facture ?</span>
+                                    <i class="fa-solid fa-chevron-down text-brand-500 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <p class="mt-3 text-gray-600 pl-4 border-l-2 border-brand-500">
+                                    C'est très simple. Dans la section "Configuration" en haut à gauche, cliquez sur le bouton "Choisir" sous la rubrique Logo. Sélectionnez un fichier image (JPG ou PNG) depuis votre ordinateur. Il sera automatiquement redimensionné et placé en haut de votre facture.
+                                </p>
+                            </details>
+
+                            <details class="group bg-white rounded-lg border border-gray-200 p-4 cursor-pointer">
+                                <summary class="flex justify-between items-center font-semibold text-gray-900 list-none">
+                                    <span>Comment signer le document ?</span>
+                                    <i class="fa-solid fa-chevron-down text-brand-500 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <p class="mt-3 text-gray-600 pl-4 border-l-2 border-brand-500">
+                                    Plus besoin d'imprimer pour signer ! Utilisez le pavé de signature en bas du formulaire. Dessinez votre signature avec votre souris (ou votre doigt sur mobile/tablette). Elle sera intégrée proprement au bas du PDF généré.
+                                </p>
+                            </details>
+
+                            <details class="group bg-white rounded-lg border border-gray-200 p-4 cursor-pointer">
+                                <summary class="flex justify-between items-center font-semibold text-gray-900 list-none">
+                                    <span>L'outil fonctionne-t-il sur mobile ?</span>
+                                    <i class="fa-solid fa-chevron-down text-brand-500 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <p class="mt-3 text-gray-600 pl-4 border-l-2 border-brand-500">
+                                    Oui, notre interface est 100% responsive. Vous pouvez créer, éditer et envoyer vos factures directement depuis votre smartphone (iPhone, Android) ou votre tablette, où que vous soyez.
+                                </p>
+                            </details>
+
+                            <details class="group bg-white rounded-lg border border-gray-200 p-4 cursor-pointer">
+                                <summary class="flex justify-between items-center font-semibold text-gray-900 list-none">
+                                    <span>Si je ferme la page, mes données sont-elles perdues ?</span>
+                                    <i class="fa-solid fa-chevron-down text-brand-500 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <p class="mt-3 text-gray-600 pl-4 border-l-2 border-brand-500">
+                                    Non, rassurez-vous. Vos données (clients, produits, historique) sont sauvegardées automatiquement dans la mémoire de votre navigateur. Vous les retrouverez à votre prochaine visite, tant que vous ne videz pas votre cache.
+                                </p>
+                            </details>
+
+                            <details class="group bg-white rounded-lg border border-gray-200 p-4 cursor-pointer">
+                                <summary class="flex justify-between items-center font-semibold text-gray-900 list-none">
+                                    <span>Comment envoyer la facture par email ?</span>
+                                    <i class="fa-solid fa-chevron-down text-brand-500 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <p class="mt-3 text-gray-600 pl-4 border-l-2 border-brand-500">
+                                    Nous privilégions la sécurité : le site n'envoie pas d'emails à votre place. Vous devez télécharger le PDF (bouton "PDF / Imprimer"), puis l'envoyer via votre propre messagerie (Gmail, Outlook...).
+                                </p>
+                            </details>
+
+                            <details class="group bg-white rounded-lg border border-gray-200 p-4 cursor-pointer">
+                                <summary class="flex justify-between items-center font-semibold text-gray-900 list-none">
+                                    <span>Puis-je sauvegarder mes clients et produits favoris ?</span>
+                                    <i class="fa-solid fa-chevron-down text-brand-500 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <p class="mt-3 text-gray-600 pl-4 border-l-2 border-brand-500">
+                                    Tout à fait ! Utilisez les petites icônes de disquette <i class="fa-solid fa-floppy-disk text-xs"></i> à côté des champs Client et sur les lignes Produits. Vos informations seront mémorisées pour un remplissage ultra-rapide la prochaine fois.
+                                </p>
                             </details>
                         </div>
                     </article>
