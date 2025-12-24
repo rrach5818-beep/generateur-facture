@@ -87,6 +87,7 @@
         }
         #preview-stamp.show { display: block; }
         
+        .section-title { @apply text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200 flex items-center; }
         #resizer { transition: background-color 0.2s; } #resizer:hover, #resizer.active { background-color: #0ea5e9; } #resizer:hover i, #resizer.active i { color: white; }
         
         /* Notifications & Modals */
@@ -106,6 +107,18 @@
         details > summary::-webkit-details-marker { display: none; }
         details[open] summary ~ * { animation: fadeIn 0.3s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- MOBILE RESPONSIVE FIXES --- */
+        @media (max-width: 1024px) {
+            /* Force l'éditeur à prendre toute la largeur sur mobile/tablette, ignorant le style inline JS */
+            #editor-panel { width: 100% !important; height: auto !important; overflow: visible !important; }
+            #preview-panel { width: 100% !important; height: auto !important; min-height: 500px; }
+            #main-container { flex-direction: column !important; overflow-y: auto !important; }
+            #resizer { display: none !important; }
+            /* Ajustements Header Mobile */
+            header .text-xl { font-size: 1.1rem; }
+            header .btn-secondary, header .btn-primary { padding: 0.5rem; font-size: 0.75rem; }
+        }
 
         @media print {
             @page { margin: 0; size: A4 portrait; }
@@ -150,44 +163,45 @@
     <!-- Header -->
     <header class="bg-white shadow-sm z-30 flex-none border-b border-gray-200 h-16">
         <div class="max-w-full mx-auto px-4 h-full flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-gradient-to-br from-brand-500 to-brand-700 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg transform transition-transform hover:scale-105 hover:rotate-3 duration-200">
+            <div class="flex items-center space-x-2 sm:space-x-3 overflow-hidden">
+                <div class="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0 bg-gradient-to-br from-brand-500 to-brand-700 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg transform transition-transform hover:scale-105 hover:rotate-3 duration-200">
                     <!-- Logo Vectoriel Personnalisé (Document Validé) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6 drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <polyline points="14 2 14 8 20 8"></polyline>
                         <path d="M9 15l2 2 4-4" class="text-brand-100"></path>
                     </svg>
                 </div>
-                <div>
-                    <div class="text-xl font-bold text-gray-900 tracking-tight leading-tight">Générateur <span class="text-brand-600">Facture</span> <span class="text-xs bg-brand-100 text-brand-700 px-2 py-0.5 rounded-full ml-1 align-middle">GRATUIT</span></div>
-                    <p class="text-[10px] text-gray-500 font-medium hidden sm:block" data-i18n="app-subtitle">Devis & Factures en ligne sans inscription</p>
+                <div class="min-w-0">
+                    <div class="text-lg sm:text-xl font-bold text-gray-900 tracking-tight leading-tight truncate">Générateur <span class="text-brand-600">Facture</span> <span class="hidden sm:inline-block text-xs bg-brand-100 text-brand-700 px-2 py-0.5 rounded-full ml-1 align-middle">GRATUIT</span></div>
+                    <p class="text-[10px] text-gray-500 font-medium hidden md:block" data-i18n="app-subtitle">Devis & Factures en ligne sans inscription</p>
                 </div>
             </div>
             
-            <div class="flex items-center space-x-2">
+            <div class="flex items-center space-x-1 sm:space-x-2">
                  <button onclick="toggleDashboard()" class="hidden md:flex items-center px-3 py-1.5 text-xs font-bold text-gray-700 bg-gray-100 rounded hover:bg-gray-200 transition mr-2 border border-gray-300">
                     <i class="fa-solid fa-chart-pie mr-2 text-brand-600"></i> Dashboard
                 </button>
 
                 <!-- MONETISATION: Bouton Soutenir (Activé) -->
+                <!-- Pour activer: changer le href="#" par votre lien BuyMeACoffee ou Paypal -->
                 <a href="https://buymeacoffee.com/generatefact" target="_blank" class="hidden lg:flex items-center text-xs font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 border border-pink-200 px-3 py-1.5 rounded transition mr-2" title="Soutenir le projet">
                     <i class="fa-solid fa-heart mr-1.5"></i> Soutenir
                 </a>
 
                 <!-- Sélecteur de langue -->
-                <div class="relative mr-2">
-                    <select onchange="setLanguage(this.value)" id="lang-select" class="appearance-none bg-gray-100 border border-gray-200 text-gray-700 text-xs font-bold py-1.5 pl-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer">
-                        <option value="fr">🇫🇷 FR</option>
-                        <option value="en">🇬🇧 EN</option>
-                        <option value="es">🇪🇸 ES</option>
+                <div class="relative mr-1 sm:mr-2">
+                    <select onchange="setLanguage(this.value)" id="lang-select" class="appearance-none bg-gray-100 border border-gray-200 text-gray-700 text-xs font-bold py-1.5 pl-2 pr-6 sm:pl-3 sm:pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 cursor-pointer w-14 sm:w-auto">
+                        <option value="fr">FR</option>
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
                     </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1 sm:px-2 text-gray-700">
                         <i class="fa-solid fa-chevron-down text-[10px]"></i>
                     </div>
                 </div>
 
-                <div class="h-8 w-px bg-gray-300 mx-2 hidden sm:block"></div>
+                <div class="h-6 w-px bg-gray-300 mx-1 hidden sm:block"></div>
 
                 <!-- NOUVEAU: Bouton Email (Concurrence) -->
                 <button onclick="sendByEmail()" class="btn-secondary hidden sm:inline-flex text-blue-600 border-blue-100 hover:bg-blue-50" title="Envoyer par Email">
@@ -206,7 +220,7 @@
                     <i class="fa-solid fa-file-circle-plus sm:mr-2"></i> <span class="hidden sm:inline" data-i18n="btn-new">Nouveau</span>
                 </button>
                 <button onclick="printInvoiceSafe()" id="download-btn" class="btn-primary">
-                    <i class="fa-solid fa-print sm:mr-2"></i> <span class="hidden sm:inline" data-i18n="btn-download">PDF / Imprimer</span>
+                    <i class="fa-solid fa-print sm:mr-2"></i> <span class="hidden sm:inline" data-i18n="btn-download">PDF</span>
                 </button>
             </div>
         </div>
@@ -359,7 +373,6 @@
                 <div id="seo-content" class="px-6 py-12 mt-12 border-t border-gray-200 text-gray-600 leading-relaxed text-sm bg-gray-50 rounded-xl">
                     <article class="prose prose-sm max-w-none text-gray-600">
                         <h1 class="text-2xl font-extrabold text-gray-900 mb-6">Logiciel de Facturation Gratuit & Générateur de Devis PDF</h1>
-                        
                         <p class="mb-4">
                             Vous cherchez un moyen simple, rapide et <strong>100% gratuit</strong> pour éditer vos factures ? Bienvenue sur <strong>Générateur Facture</strong> (anciennement InvoicExpert). Notre outil en ligne a été conçu pour simplifier la vie des freelances, artisans, auto-entrepreneurs et PME. Fini les fichiers Excel complexes ou les logiciels payants : créez des documents professionnels, conformes et esthétiques en quelques clics.
                         </p>
@@ -856,6 +869,12 @@
         function initSignaturePad() { signatureCanvas.addEventListener('mousedown', startDrawing); signatureCanvas.addEventListener('mousemove', draw); signatureCanvas.addEventListener('mouseup', stopDrawing); signatureCanvas.addEventListener('mouseout', stopDrawing); signatureCanvas.addEventListener('touchstart', (e) => { e.preventDefault(); if(e.touches.length > 0) { const touch = e.touches[0]; const mouseEvent = new MouseEvent("mousedown", { clientX: touch.clientX, clientY: touch.clientY }); signatureCanvas.dispatchEvent(mouseEvent); } }, {passive: false}); signatureCanvas.addEventListener('touchend', (e) => { const mouseEvent = new MouseEvent("mouseup", {}); signatureCanvas.dispatchEvent(mouseEvent); }); signatureCanvas.addEventListener('touchmove', (e) => { e.preventDefault(); if(e.touches.length > 0) { const touch = e.touches[0]; const mouseEvent = new MouseEvent("mousemove", { clientX: touch.clientX, clientY: touch.clientY }); signatureCanvas.dispatchEvent(mouseEvent); } }, {passive: false}); }
 
         if(resizer && editorPanel) { let x = 0; let w = 0; const mouseDownHandler = function(e) { x = e.clientX; const sbWidth = window.getComputedStyle(editorPanel).width; w = parseInt(sbWidth, 10); document.addEventListener('mousemove', mouseMoveHandler); document.addEventListener('mouseup', mouseUpHandler); document.body.style.cursor = 'col-resize'; document.body.style.userSelect = 'none'; resizer.classList.add('active'); }; const mouseMoveHandler = function(e) { const dx = e.clientX - x; const newWidth = w + dx; if(newWidth > 250 && newWidth < (window.innerWidth * 0.85)) { editorPanel.style.width = `${newWidth}px`; } }; const mouseUpHandler = function() { document.removeEventListener('mousemove', mouseMoveHandler); document.removeEventListener('mouseup', mouseUpHandler); document.body.style.removeProperty('cursor'); document.body.style.removeProperty('user-select'); resizer.classList.remove('active'); }; resizer.addEventListener('mousedown', mouseDownHandler); }
+
+        // SECURITE: Protection anti-fermeture si modifications non sauvées (basic)
+        window.addEventListener('beforeunload', function (e) {
+            // Optionnel : ne pas activer si on veut que ce soit fluide, mais utile pour éviter les pertes
+            // e.preventDefault(); e.returnValue = '';
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
             const dateInput = document.getElementById('invoice-date'); if(dateInput) dateInput.valueAsDate = new Date();
